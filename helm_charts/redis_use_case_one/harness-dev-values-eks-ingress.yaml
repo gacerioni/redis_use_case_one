@@ -1,0 +1,25 @@
+# because we will roll with nginx ingress this time
+service:
+  type: ClusterIP
+  port: 5000
+
+# now we use the nginx ingress - should I not hardcore the className ingress.class?
+# this is gonna be fun... I need to pass a private key to a secret in the namespace, for TLS
+# Im gonna use Harness to save the certificate + key as Secrets in my Vault
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: usecaseone.platformengineer.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: tls-ingress-cert-secrets
+      hosts:
+        - usecaseone.platformengineer.io
+
+# TLS TRICK - GET SENSITIVE INFO FROM VAULT VIA HARNESS RENDER EXPR
+tls:
+ crt: <+pipeline.variables.TLS_CRT>
+ key: <+pipeline.variables.TLS_KEY>

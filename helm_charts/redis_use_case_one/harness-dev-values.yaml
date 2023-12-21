@@ -1,0 +1,37 @@
+replicaCount: 1
+
+createNamespace: true
+namespace: <+infra.namespace>
+
+nameOverride: <+service.name>
+
+image:
+  full_image_name: <+artifact.image>
+  pullPolicy: Always
+
+podAnnotations:
+  prometheus.io/scrape: 'true'
+  prometheus.io/path: '/metrics'
+  #prometheus.io/port: '8080'
+
+service:
+  type: NodePort
+  port: 8080
+  nodePort: 30053
+
+resources:
+  limits:
+   cpu: '0.5'
+   memory: '250Mi'
+  requests:
+   cpu: '0.5'
+   memory: '250Mi'
+
+# REDIS DB CONFIGMAP (WILL COME FROM HARNESS VARIABLES, AS I DONT WANT MY PUBLIC ENDPOINTS HANGING IN GITHUB LATER
+env:
+  config:
+    HARNESS_FF_SDK_KEY: "gabsdummysdkkey"
+    REDIS_HOST_OSS: <+pipeline.variables.REDIS_HOST_OSS>
+    REDIS_PORT_OSS: <+pipeline.variables.REDIS_PORT_OSS>
+    REDIS_HOST_ENTERPRISE: <+pipeline.variables.REDIS_HOST_ENTERPRISE>
+    REDIS_PORT_ENTERPRISE: <+pipeline.variables.REDIS_PORT_ENTERPRISE>
