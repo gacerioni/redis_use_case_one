@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View List - {{ order }}</title>
+</head>
+<body>
+    <a href="/">Back to Home</a>
+    <h1>List of Integers ({{ order }} Order)</h1>
+    <ul>
+        {% for integer in integers %}
+            <li>{{ integer }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

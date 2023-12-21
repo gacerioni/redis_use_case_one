@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Sorted Set - {{ order }}</title>
+</head>
+<body>
+    <a href="/">Back to Home</a>
+    <h1>Sorted Set Integers ({{ order }})</h1>
+    <ul>
+        {% for integer in integers %}
+            <li>{{ integer }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

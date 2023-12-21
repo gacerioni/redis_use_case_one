@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redis Gabs Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Gabs Redis Challenge - Use Case One</h1>
+    <img src="{{ url_for('static', filename='redis.png') }}" alt="Redis Logo" class="redis-logo" />
+
+    <div>
+        <h2>Available Actions to Play:</h2>
+        <ul>
+            <li><a href="/add_sorted_set">Add Integers - Sorted Set</a></li>
+            <li><a href="/delete_sorted_set">Delete Integers - Sorted Set</a></li>
+            <li><a href="/view_asc_sorted_set">View Sorted Set in Ascending Order</a></li>
+            <li><a href="/view_desc_sorted_set">View Sorted Set in Descending Order</a></li>
+        </ul>
+        <ul>
+            <li><a href="/add_list">Add Integers - List</a></li>
+            <li><a href="/delete_list">Delete Integers - List</a></li>
+            <li><a href="/view_asc_list">View List in Ascending Order</a></li>
+            <li><a href="/view_desc_list">View List in Descending Order</a></li>
+        </ul>
+    </div>
+</body>
+</html>
