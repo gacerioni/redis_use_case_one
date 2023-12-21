@@ -76,6 +76,9 @@ def add_hundred_integers_list(db_conn_obj, starting_pos: int):
     list_name = "integer_gabs_list"
     starting_pos = int(starting_pos)
 
+    # Clear the existing sorted set, if it exists
+    db_conn_obj.delete("integer_gabs_list")
+
     # Create a list of integers
     integers = [str(i) for i in range(starting_pos, starting_pos + 100)]
 
